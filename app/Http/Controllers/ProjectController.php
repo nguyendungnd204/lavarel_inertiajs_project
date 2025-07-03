@@ -66,7 +66,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $query = $project->tasks();
+        $query = $project->tasks()->with(['project', 'createdBy', 'updatedBy', 'assignedUser']);
 
         $sortField = request("sort_field", "created_at");
         $sortDirection = request("sort_direction", "desc");
